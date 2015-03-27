@@ -1,0 +1,9 @@
+
+CREATE DATABASE <%= node['lamp']['wp']['db_name'] %>;
+
+CREATE USER <%= node['lamp']['wp']['db_user'] %>@localhost IDENTIFIED BY '<%= node['lamp']['wp']['db_password'] %>';
+SET PASSWORD FOR <%= node['lamp']['wp']['db_user'] %>@localhost= PASSWORD("<%= node['lamp']['wp']['db_password'] %>");
+
+GRANT ALL PRIVILEGES ON <%= node['lamp']['wp']['db_name'] %>.* TO <%= node['lamp']['wp']['db_user'] %>@localhost IDENTIFIED BY '<%= node['lamp']['wp']['db_password'] %>';
+
+FLUSH PRIVILEGES;
